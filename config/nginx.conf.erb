@@ -12,7 +12,15 @@ http {
 	server {
 		listen <%= ENV["PORT"] %>;
 
-		location /dev/ {
+		location /dev {
+			proxy_pass <%= ENV["API_DEV"] %>;
+		}
+
+		location /dev/api {
+			proxy_pass <%= ENV["API_DEV"] %>;
+		}
+
+		location /dev/swagger {
 			proxy_pass <%= ENV["API_DEV"] %>;
 		}
 
