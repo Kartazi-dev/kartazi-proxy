@@ -12,7 +12,7 @@ http {
 	server {
 		listen <%= ENV["PORT"] %>;
 
-		location / {
+		location /dev {
 			proxy_pass <%= ENV["API_DEV"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
