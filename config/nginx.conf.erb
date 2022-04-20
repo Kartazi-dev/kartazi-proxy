@@ -12,14 +12,14 @@ http {
 	server {
 		listen <%= ENV["PORT"] %>;
 
-		location /dev {
+		location /dev/ {
 			proxy_pass <%= ENV["API_DEV"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
 		}
 
 		if ($http_x_forwarded_proto != "https") {
-			rewrite ^(.*)$ https://$host$1/dev permanent;
+			rewrite ^(.*)$ https://$host$1 permanent;
 		}
 	}
 }
