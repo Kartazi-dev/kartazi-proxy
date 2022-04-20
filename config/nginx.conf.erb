@@ -12,10 +12,7 @@ http {
 	server {
 		listen <%= ENV["PORT"] %>;
 
-		location /dev/ {
-			add_header x-real-IP $remote_addr;
-			add_header x-forwarded-for $proxy_add_x_forwarded_for;
-			add_header host "${http_host}/dev/";
+		location /dev {
 			proxy_pass <%= ENV["API_DEV"] %>;
 		}
 
