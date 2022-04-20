@@ -13,9 +13,12 @@ http {
 		listen <%= ENV["PORT"] %>;
 
 		location /dev/ {
-			proxy_pass <%= ENV["API_DEV"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
+			proxy_set_header x-real-IP $remote_addr;
+			proxy_set_header x-forwarded-for $proxy_add_x_forwarded_for;
+			proxy_set_header host $http_host;
+			proxy_pass <%= ENV["API_DEV"] %>;
 		}
 
 		if ($http_x_forwarded_proto != "https") {
