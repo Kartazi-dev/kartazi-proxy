@@ -12,8 +12,8 @@
 		}
 	],
 	"env": {
-		"UPSTREAM_SERVER": {
-			"description": "URL of upstream server to which all requests should be proxied"
+		"API_DEV": {
+			"description": "URL da api de dev"
 		}
 	},
 	"stack": "heroku-18"
